@@ -34,7 +34,7 @@
 </script>
 
 {#if loaded}
-	<img class="rounded" {src} alt={src} />
+	<img class="rounded cursor-pointer hover:opacity-75" {src} alt={src} />
 {:else}
 	<div id={`blurhash-${blurhash}`} />
 {/if}

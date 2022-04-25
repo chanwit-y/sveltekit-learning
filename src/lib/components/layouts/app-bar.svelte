@@ -1,8 +1,9 @@
 <script lang="ts">
 	import { get } from 'svelte/store';
 	import { themeStore } from '$lib/data/stores/theme';
-	import { SettingsIcon, MoonIcon, SunIcon } from 'svelte-feather-icons';
+	import { DatabaseIcon, FolderIcon, ImageIcon, SettingsIcon, MoonIcon, SunIcon } from 'svelte-feather-icons';
 
+	let open = false;
 	let mode = get(themeStore).mode;
 	themeStore.subscribe((t) => (mode = t.mode));
 
@@ -17,7 +18,7 @@
 	class="flex justify-between items-center sticky z-30 top-0 bg-white h-16 dark:bg-slate-600 dark:text-white"
 >
 	<div class="font-bold mx-4 text-2xl tracking-widest ">Photo.log</div>
-	<div class="flex gap-4 mx-6">
+	<div class="flex gap-5 mx-6">
 		{#if mode === 'dark'}
 			<button on:click={() => handleThemeMode('light')}>
 				<SunIcon />
@@ -26,6 +27,23 @@
 			<button on:click={() => handleThemeMode('dark')}>
 				<MoonIcon />
 			</button>
+		{/if}
+		<button on:click={() => (open = !open)}>
+			<DatabaseIcon />
+		</button>
+		{#if open}
+			<div class="absolute top-0 left-0 h-screen w-screen" on:click={() => (open = false)} />
+			<div class="absolute top-14 right-14 w-52 h-22 bg-white rounded shadow-md text-gray-600 p-4">
+				<div class="w-4 h-4 bg-white rotate-45 absolute right-4 top--5" />
+				<div class="flex gap-2 my-1 p-2 rounded hover:bg-blue-100 cursor-pointer">
+					<FolderIcon />
+					<span>Album</span>
+				</div>
+				<div class="flex gap-2 my-1 p-2 rounded hover:bg-blue-100 cursor-pointer">
+					<ImageIcon />
+					<span>Photo</span>
+				</div>
+			</div>
 		{/if}
 		<SettingsIcon />
 	</div>

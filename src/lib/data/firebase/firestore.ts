@@ -1,4 +1,4 @@
-import { app } from './init-firebase';
+import { app, database } from './init-firebase';
 import {
 	collection,
 	CollectionReference,
@@ -6,6 +6,7 @@ import {
 	getDocs,
 	getFirestore,
 	setDoc,
+	updateDoc,
 	type DocumentData
 } from 'firebase/firestore';
 
@@ -23,5 +24,16 @@ export class FireStore {
 	public static async addData(collectionName: string, data: any) {
 		const userRef = doc(this._createCollection(`${collectionName}`));
 		await setDoc(userRef, data);
+	}
+
+	public static async updateData(
+		collectionName: string,
+		id: string,
+		field: string,
+		value: unknown,
+		...moreFieldsAndValues: unknown[]
+	) {
+		const userRef = doc(database, collectionName, id);
+		await updateDoc(userRef, field, value, ...moreFieldsAndValues);
 	}
 }

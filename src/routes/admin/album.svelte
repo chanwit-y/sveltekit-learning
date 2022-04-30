@@ -17,8 +17,7 @@
 	import Modal from '$lib/components/common/modal.svelte';
 	import Image from '$lib/components/common/image.svelte';
 	import { FireStore } from '$lib/data/firebase/firestore';
-	import TextField from '$lib/components/common/textField.svelte';
-	import Button from '$lib/components/common/button.svelte';
+	import Info from './info.svelte';
 
 	export let albums: any[] = [];
 
@@ -52,10 +51,5 @@
 </div>
 
 <Modal headerText="Add Album" open={openAddModal} on:open={(e) => (openAddModal = e.detail)}>
-	<TextField label="Name" />
-	<TextField label="description" />
-	<TextField label="location" />
-	<div class="flex justify-end">
-		<Button text="OK" />
-	</div>
+	<Info />
 </Modal>

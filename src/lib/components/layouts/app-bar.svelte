@@ -40,17 +40,17 @@
 		</button>
 		{#if open}
 			<div class="absolute top-0 left-0 h-screen w-screen" on:click={() => (open = false)} />
-			<div class="absolute top-14 right-14 w-52 h-22 bg-white rounded shadow-md text-gray-600 p-4">
-				<div class="w-4 h-4 bg-white rotate-45 absolute right-4 top--5" />
+			<div class="absolute top-14 right-14 w-52 h-22 bg-white dark:bg-slate-400 rounded shadow-md text-gray-600 p-3">
+				<div class="w-4 h-4 bg-white dark:bg-slate-400 rotate-45 absolute right-4 top--5" />
 				<a
-					class="flex gap-2 my-1 p-2 rounded hover:bg-blue-100 cursor-pointer"
+					class="flex gap-2 my-1 p-2 rounded dark:hover:bg-slate-300 cursor-pointer"
 					href="/admin/album"
 					on:click={() => (open = false)}
 				>
 					<FolderIcon />
 					<span class="mx-1">Album</span>
 				</a>
-				<div class="flex gap-2 my-1 p-2 rounded hover:bg-blue-100 cursor-pointer">
+				<div class="flex gap-2 my-1 p-2 rounded dark:hover:bg-slate-300 cursor-pointer">
 					<ImageIcon />
 					<span class="mx-1">Photo</span>
 				</div>

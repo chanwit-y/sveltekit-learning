@@ -11,7 +11,7 @@
 
 <div class={mode}>
 	<AppBar />
-	<main class="bg-gray-100 h-screen dark:bg-slate-800 dark:text-white">
+	<main class="bg-gray-100 h-auto min-h-screen dark:bg-slate-800 dark:text-white">
 		<slot />
 	</main>
 </div>

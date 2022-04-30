@@ -11,7 +11,7 @@
 
 {#if open}
 	<div
-		class="absolute top-0 left-0 opacity-70 z-40 w-screen h-screen bg-slate-200 cursor-pointer"
+		class="absolute top-0 left-0 opacity-80 z-40 w-screen h-screen bg-slate-100 cursor-pointer"
 		in:fly={{ x: -5, duration: pageTransitionDuration, delay: pageTransitionDuration }}
 		out:fly={{ x: 5, duration: pageTransitionDuration }}
 		on:click|preventDefault={handleClose}

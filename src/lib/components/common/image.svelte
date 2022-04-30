@@ -4,15 +4,17 @@
 
 	export let src: string;
 	export let blurhash: string;
+	export let width: number = 334;
+	export let height: number = 225;
 
 	let loaded = false;
 	let failed = false;
 
 	const getBlurhash = (blurhash: string) => {
-		const pixels = decode(blurhash, 334, 225);
+		const pixels = decode(blurhash, width, height);
 		const canvas = document.createElement('canvas');
 		const ctx = canvas.getContext('2d')!;
-		const imageData = ctx.createImageData(334, 225);
+		const imageData = ctx.createImageData(width, height);
 		canvas.className = 'rounded h-56 w-80';
 		imageData.data.set(pixels);
 		ctx.putImageData(imageData, 0, 0);
@@ -34,7 +36,7 @@
 </script>
 
 {#if loaded}
-	<img class="rounded cursor-pointer hover:opacity-75" {src} alt={src} />
+	<img class="rounded h-56 cursor-pointer hover:opacity-75" {src} alt={src} />
 {:else}
-	<div id={`blurhash-${blurhash}`} />
+	<div class="rounded h-56" id={`blurhash-${blurhash}`} />
 {/if}

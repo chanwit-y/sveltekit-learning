@@ -1,12 +1,13 @@
 <script lang="ts">
+	import { FireStore } from '$lib/data/firebase/firestore';
+
 	import { UploadCloudIcon } from 'svelte-feather-icons';
 
 	let files: FileList;
 	let fileInput: HTMLInputElement;
 
 	$: console.log(fileInput);
-	$: console.log(files);
-	
+	// $: FireStore.uploadFile("01", "beer", files[0])
 </script>
 
 <div
@@ -25,6 +26,14 @@
 				accept=".png,.jpg"
 				id="mainPicture"
 			/>
+			<button
+				on:click={async () => {
+					console.log(files[0]);
+					const result = await FireStore.uploadFile('01', 'beer', files[0]);
+					console.log(result);
+					
+				}}>upload</button
+			>
 		</div>
 	</div>
 </div>

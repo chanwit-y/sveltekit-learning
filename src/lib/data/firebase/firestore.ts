@@ -1,5 +1,5 @@
 import { app, database } from './init-firebase';
-import { getStorage, ref } from 'firebase/storage';
+import { getStorage, ref, uploadBytes } from 'firebase/storage';
 import {
 	collection,
 	CollectionReference,
@@ -42,6 +42,8 @@ export class FireStore {
 		const mainPicturePath = `/${userId}/${id}.${pic.name.split('.').pop()}`;
 		const storage = getStorage();
 		const dataRef = ref(storage, mainPicturePath);
+		// await dataRef.put(pic);
+		await uploadBytes(dataRef, pic);
 		return {
 			name: dataRef.name,
 			fullPath: dataRef.fullPath

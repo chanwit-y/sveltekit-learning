@@ -2,14 +2,12 @@
 	import { fade } from 'svelte/transition';
 	import { FireStore } from '$lib/data/firebase/firestore';
 	import { ImageIcon, UploadIcon, Trash2Icon } from 'svelte-feather-icons';
-	import { encode } from 'blurhash';
 
 	export let hiddenUpload = false;
 
 	let files: FileList;
 	let fileInput: HTMLInputElement;
 	let base64: string | ArrayBuffer | null | undefined;
-	let blurhash: string;
 
 	const getBase64 = (image: File) => {
 		const reader = new FileReader();
@@ -52,7 +50,7 @@
 		class="relative w-full h-full text-slate-800  border-4 border-slate-300 rounded border-dashed"
 		in:fade={{ duration: 2000 }}
 	>
-		<img class="w-full h-full " src={base64.toString()} alt="preview" />
+		<img class="w-full h-full p-1 rounded " src={base64.toString()} alt="preview" />
 		<div class="flex gap-2 absolute bottom-0 right-0 p-1">
 			<button
 				class="rounded-full bg-red-800 hover:bg-red-600 text-white text-xs m-2 p-1 border-2 border-white shadow-md"
@@ -64,11 +62,8 @@
 				<button
 					class="rounded-full bg-blue-600 text-white text-xs m-2"
 					on:click={async () => {
-						console.log(files[0]);
 						const result = await FireStore.uploadFile('01', 'beer', files[0]);
 						console.log(result);
-						// const img = await read(result.fullPath);
-						// const blurhash = encode(img, img.bitmap.width, img.bitmap.height, 4, 4);
 					}}
 				>
 					<UploadIcon />

@@ -1,4 +1,5 @@
 <script lang="ts">
+	import { SaveIcon, TrashIcon } from 'svelte-feather-icons';
 	import Button from '$lib/components/common/button.svelte';
 	import ImageUpload from '$lib/components/common/imageUpload.svelte';
 	import TextAear from '$lib/components/common/textAear.svelte';
@@ -20,7 +21,17 @@
 	<TextAear label="description" />
 
 	<div class="flex justify-end">
-		<Button type="primary" text="Add" />
-		<Button type="danger" text="Delete" />
+		<Button type="primary">
+			<div class="flex justify-center items-center gap-1">
+				<SaveIcon class="w-4" />
+				<span>Add</span>
+			</div>
+		</Button>
+		<Button type="danger">
+			<div class="flex justify-center items-center gap-1">
+				<TrashIcon class="w-4" />
+				<span>Delete</span>
+			</div>
+		</Button>
 	</div>
 </div>

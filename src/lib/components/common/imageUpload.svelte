@@ -26,7 +26,7 @@
 		on:click={() => {
 			fileInput.click();
 		}}
-		in:fade={{ duration: 2000 }}
+		in:fade={{ duration: 1000 }}
 		class="p-1 w-full h-full text-slate-800  border-4 border-slate-300 rounded border-dashed cursor-pointer hover:opacity-80"
 	>
 		<div class="flex flex-col justify-center items-center rounded bg-white w-full h-full ">

@@ -8,7 +8,7 @@
 <div class="flex flex-col">
 	<div class="flex">
 		<div class="mr-2 ml-1 my-1 w-2/5">
-			<ImageUpload />
+			<ImageUpload hiddenUpload={true} />
 		</div>
 		<div class="flex flex-col w-3/5">
 			<TextField label="Name" />

@@ -5,3 +5,7 @@
 .top--5 {
 	top: -5px;
 }
+
+.min-w-80 {
+	min-width: 80px;
+}

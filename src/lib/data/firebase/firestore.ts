@@ -1,4 +1,5 @@
 import { app, database } from './init-firebase';
+import { getStorage, ref } from 'firebase/storage';
 import {
 	collection,
 	CollectionReference,
@@ -35,5 +36,15 @@ export class FireStore {
 	) {
 		const userRef = doc(database, collectionName, id);
 		await updateDoc(userRef, field, value, ...moreFieldsAndValues);
+	}
+
+	public static async uploadFile(id: string, userId: string, pic: File) {
+		const mainPicturePath = `/${userId}/${id}.${pic.name.split('.').pop()}`;
+		const storage = getStorage();
+		const dataRef = ref(storage, mainPicturePath);
+		return {
+			name: dataRef.name,
+			fullPath: dataRef.fullPath
+		};
 	}
 }

@@ -26,6 +26,7 @@
 		on:click={() => {
 			fileInput.click();
 		}}
+		in:fade={{ duration: 2000 }}
 		class="p-1 w-full h-full text-slate-800  border-4 border-slate-300 rounded border-dashed cursor-pointer hover:opacity-80"
 	>
 		<div class="flex flex-col justify-center items-center rounded bg-white w-full h-full ">
@@ -49,7 +50,7 @@
 	<div
 		class="relative w-full h-full text-slate-800  border-4 border-slate-300 rounded border-dashed"
 		in:fade={{ duration: 2000 }}
-	>
+>
 		<img class="w-full h-full p-1 rounded " src={base64.toString()} alt="preview" />
 		<div class="flex gap-2 absolute bottom-0 right-0 p-1">
 			<button

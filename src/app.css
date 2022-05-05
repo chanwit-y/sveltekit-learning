@@ -9,3 +9,7 @@
 .min-w-80 {
 	min-width: 80px;
 }
+
+.min-h-24 {
+	min-height: 6rem;
+}

@@ -1,10 +1,12 @@
 <script lang="ts">
+	import { createEventDispatcher } from 'svelte';
 	import { fade } from 'svelte/transition';
 	import { FireStore } from '$lib/data/firebase/firestore';
 	import { ImageIcon, UploadIcon, Trash2Icon } from 'svelte-feather-icons';
 
 	export let hiddenUpload = false;
 
+	let dispatch = createEventDispatcher();
 	let files: FileList;
 	let fileInput: HTMLInputElement;
 	let base64: string | ArrayBuffer | null | undefined;
@@ -18,7 +20,7 @@
 	};
 
 	$: files && getBase64(files[0]);
-	$: console.log(fileInput);
+	$: files, dispatch('value', files ? files[0] : {});
 </script>
 
 {#if !base64}
@@ -50,7 +52,7 @@
 	<div
 		class="relative w-full h-full text-slate-800  border-4 border-slate-300 rounded border-dashed"
 		in:fade={{ duration: 2000 }}
->
+	>
 		<img class="w-full h-full p-1 rounded " src={base64.toString()} alt="preview" />
 		<div class="flex gap-2 absolute bottom-0 right-0 p-1">
 			<button

@@ -15,13 +15,13 @@
 
 {#if open}
 	<div
-		class="absolute top-0 left-0 opacity-80 z-40 w-screen h-screen bg-slate-100 cursor-pointer dark:bg-slate-400"
+		class="fixed overflow-auto top-0 left-0 opacity-80 z-40 w-screen h-screen bg-slate-100 cursor-pointer dark:bg-slate-400"
 		in:fly={{ x: -5, duration: pageTransitionDuration, delay: pageTransitionDuration }}
 		out:fly={{ x: 5, duration: pageTransitionDuration }}
 		on:click|preventDefault={handleClose}
 	/>
 	<div
-		class="absolute top-2/4 left-2/4 -translate-x-2/4 -translate-y-2/4 bg-white  dark:bg-slate-600 h-auto z-50 text-black rounded shadow-2xl w-2/5"
+		class="absolute overflow-auto top-2/4 left-2/4 -translate-x-2/4 -translate-y-2/4 bg-white  dark:bg-slate-600 h-auto z-50 text-black rounded shadow-2xl w-2/5"
 		in:fly={{ x: -5, duration: pageTransitionDuration, delay: pageTransitionDuration }}
 		out:fly={{ x: 5, duration: pageTransitionDuration }}
 	>

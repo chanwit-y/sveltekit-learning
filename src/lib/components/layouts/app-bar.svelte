@@ -47,13 +47,13 @@
 					href="/admin/album"
 					on:click={() => (open = false)}
 				>
-					<FolderIcon />
-					<span class="mx-1">Album</span>
-				</a>
-				<div class="flex gap-2 my-1 p-2 rounded dark:hover:bg-slate-300 cursor-pointer">
 					<ImageIcon />
 					<span class="mx-1">Photo</span>
-				</div>
+				</a>
+				<!-- <div class="flex gap-2 my-1 p-2 rounded dark:hover:bg-slate-300 cursor-pointer">
+					<ImageIcon />
+					<span class="mx-1">Photo</span>
+				</div> -->
 			</div>
 		{/if}
 		<SettingsIcon />

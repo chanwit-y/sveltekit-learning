@@ -19,8 +19,12 @@
 		};
 	};
 
+	
+
 	$: files && getBase64(files[0]);
 	$: files, dispatch('value', files ? files[0] : {});
+
+
 </script>
 
 {#if !base64}

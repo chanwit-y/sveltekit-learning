@@ -44,7 +44,7 @@
 				<div class="w-4 h-4 bg-white dark:bg-slate-400 rotate-45 absolute right-4 top--5" />
 				<a
 					class="flex gap-2 my-1 p-2 rounded dark:hover:bg-slate-300 cursor-pointer"
-					href="/admin/album"
+					href="/admin/photo"
 					on:click={() => (open = false)}
 				>
 					<ImageIcon />

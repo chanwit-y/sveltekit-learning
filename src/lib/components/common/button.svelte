@@ -7,7 +7,7 @@
 
 <button
 	on:click={handleClick}
-	class={`p-2 rounded m-1 text-sm font-bold tracking-wide shadow-2xl ${
+	class={`p-2 rounded m-1 text-sm font-bold tracking-wide shadow-2xl dark:text-white ${
 		type === 'primary'
 			? `bg-blue-500  hover:bg-blue-800 active:bg-blue-600 focus:ring-blue-500 `
 			: type === 'danger'

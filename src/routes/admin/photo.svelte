@@ -18,6 +18,7 @@
 	import Image from '$lib/components/common/image.svelte';
 	import { FireStore } from '$lib/data/firebase/firestore';
 	import Info from './info.svelte';
+import Modal2 from '$lib/components/common/modal.svelte';
 
 	export let photos: any[] = [];
 
@@ -35,7 +36,7 @@
 	<div class="grid grid-cols-4 gap-2 my-4">
 		{#each photos as photo}
 			<Card>
-				<Image src={photo.imageUrl} blurhash={photo.blurhash} width={285} />
+				<Image src={photo.imageUrl} blurhash={photo.blurhash} width={285} canPerview={false} />
 				<div class="flex justify-between text-sm text-gray-500 mt-2">
 					<span class="font-bold">{photo.name}</span>
 					<span class="text-xs"
@@ -53,3 +54,5 @@
 <Modal headerText="Add Photo" open={openAddModal} on:open={(e) => (openAddModal = e.detail)}>
 	<Info />
 </Modal>
+
+<!-- <Modal2 open={openAddModal} on:open={(e) => (openAddModal = e.detail)} /> -->

@@ -3,11 +3,13 @@
 	import { fade } from 'svelte/transition';
 	import { onMount, createEventDispatcher } from 'svelte';
 	import { XCircleIcon } from 'svelte-feather-icons';
+	import Modal from './modal.svelte';
 
 	export let src: string;
 	export let blurhash: string;
 	export let width: number = 334;
 	export let height: number = 225;
+	export let canPerview: boolean = true;
 
 	const pageTransitionDuration = 150;
 	// let dispatch = createEventDispatcher();
@@ -15,8 +17,6 @@
 	let loaded = false;
 	let failed = false;
 	let open = false;
-
-	// $: open, dispatch('open', open);
 
 	const getBlurhash = (blurhash: string) => {
 		const pixels = decode(blurhash, width, height);
@@ -50,29 +50,31 @@
 		{src}
 		alt={src}
 	/>
-	{#if open}
-		<!-- <div class="bg-bottom bg-gray-400 bg-no-repeat h-48 w-64" style="background-image: url('https://tailwind.build/placeholders/pictures/office.jpg'); background-size: 12rem 8rem"></div> -->
-		<!-- .bg-bottom {
-			background-position: bottom;
-		      } -->
+	{#if open && canPerview}
 		<div
-			class="absolute top-0 left-0 opacity-80 z-40 w-screen h-screen bg-slate-100 cursor-pointer dark:bg-slate-400"
-			in:fade={{ duration: pageTransitionDuration, delay: pageTransitionDuration }}
-			out:fade={{ duration: pageTransitionDuration }}
-			on:click|preventDefault={() => (open = false)}
-		/>
-		<div
-			class="absolute top-2/4 left-2/4 -translate-x-2/4 -translate-y-2/4 bg-white  dark:bg-slate-600 z-50 text-black rounded shadow-2xl "
-			in:fade={{ duration: pageTransitionDuration, delay: pageTransitionDuration }}
-			out:fade={{ duration: pageTransitionDuration }}
+			id="defaultModal"
+			tabindex="-1"
+			class="overflow-y-auto overflow-x-hidden fixed top-0 right-0 left-0 w-full md:inset-0 h-modal md:h-full "
 		>
-			<button
-				class="absolute top-0 right-0 m-2 rounded-full bg-black text-white"
+			<div
+				class="absolute top-0 right-0 left-0 w-full md:inset-0 h-modal md:h-full z-40 dark:bg-slate-400 cursor-pointer opacity-80"
+				in:fade={{ duration: pageTransitionDuration, delay: pageTransitionDuration }}
+				out:fade={{ duration: pageTransitionDuration }}
 				on:click|preventDefault={() => (open = false)}
+			/>
+			<div
+				class="absolute top-2/4 left-2/4 -translate-x-2/4 -translate-y-2/4 bg-white  dark:bg-slate-600 z-50 text-black rounded shadow-2xl "
+				in:fade={{ duration: pageTransitionDuration, delay: pageTransitionDuration }}
+				out:fade={{ duration: pageTransitionDuration }}
 			>
-				<XCircleIcon />
-			</button>
-			<img class="rounded-md" on:click={() => (open = !open)} {src} alt={src} />
+				<button
+					class="absolute top-0 right-0 m-2 rounded-full bg-black text-white"
+					on:click|preventDefault={() => (open = false)}
+				>
+					<XCircleIcon />
+				</button>
+				<img class="rounded-md" on:click={() => (open = !open)} {src} alt={src} />
+			</div>
 		</div>
 	{/if}
 {:else}

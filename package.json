@@ -15,6 +15,7 @@
   "devDependencies": {
     "@sveltejs/adapter-auto": "next",
     "@sveltejs/kit": "next",
+    "@types/uuid": "^8.3.4",
     "autoprefixer": "^10.4.4",
     "dayjs": "^1.11.1",
     "firebase": "^9.6.11",
@@ -31,6 +32,7 @@
   },
   "type": "module",
   "dependencies": {
-    "blurhash": "^1.1.5"
+    "blurhash": "^1.1.5",
+    "uuid": "^8.3.2"
   }
 }

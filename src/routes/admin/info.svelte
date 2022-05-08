@@ -24,7 +24,7 @@
 <div class="flex flex-col">
 	<div class="flex">
 		<div class="mr-2 ml-1 my-1 w-2/5">
-			<ImageUpload hiddenUpload={true} on:value={(v) => (image = v.detail)} />
+			<ImageUpload hiddenUpload={false} on:value={(v) => (image = v.detail)} />
 		</div>
 		<div class="flex flex-col w-3/5">
 			<TextField label="Name" on:value={(v) => (name = v.detail)} />

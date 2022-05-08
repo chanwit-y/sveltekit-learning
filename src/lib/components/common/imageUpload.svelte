@@ -1,4 +1,5 @@
 <script lang="ts">
+	import {v4 as uuidv4} from "uuid";
 	import { createEventDispatcher } from 'svelte';
 	import { fade } from 'svelte/transition';
 	import { FireStore } from '$lib/data/firebase/firestore';
@@ -19,12 +20,8 @@
 		};
 	};
 
-	
-
 	$: files && getBase64(files[0]);
 	$: files, dispatch('value', files ? files[0] : {});
-
-
 </script>
 
 {#if !base64}
@@ -65,11 +62,12 @@
 			>
 				<Trash2Icon class="w-4 h-4" />
 			</button>
-			{#if !hiddenUpload}
+			{#if !!!hiddenUpload}
 				<button
 					class="rounded-full bg-blue-600 text-white text-xs m-2"
 					on:click={async () => {
-						const result = await FireStore.uploadFile('01', 'beer', files[0]);
+						const id = uuidv4();
+						const result = await FireStore.uploadFile(id, 'beer', files[0]);
 						console.log(result);
 					}}
 				>
